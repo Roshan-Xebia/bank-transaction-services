@@ -1,0 +1,124 @@
+swagger: '2.0'
+info:
+  description: This is a Bank server to get Transaction deatils and its amount.
+  version: 1.0.0
+  title: Bank Transaction
+  contact:
+    email: roshanjain@xebia.com
+host: 'localhost:8081'
+basePath: /bank-transaction-services/rs/v1/current-accounts
+tags:
+  - name: bank-transaction-services
+    description: Transaction services
+    externalDocs:
+      description: Base
+      url: 'http://localhost:8080/bank-transaction-services/'
+schemes:
+  - http
+paths:
+  /transactions:
+    get:
+      tags:
+        - transactions
+      summary: get all transaction of account
+      description: Acccount id can be provided
+      operationId: findPetsByStatus
+      produces:
+        - application/json
+      parameters:
+        - name: accountId
+          in: query
+          description: accountId values that need to be considered for get transaction
+          required: true
+          type: string
+      responses:
+        '200':
+          description: successful operation
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/TransactionDTO'
+        '400':
+          description: Invalid input value
+  /transactionsbytype:
+    get:
+      tags:
+        - transactions
+      summary: get all transaction of account by specific transaction type
+      description: Acccount id and transaction type can be provided
+      produces:
+        - application/json
+      parameters:
+        - name: accountId
+          in: query
+          description: accountId values that need to be considered for get transaction
+          required: true
+          type: string
+        - name: transType
+          in: query
+          description: transType values that need to be considered for filter transaction
+          required: true
+          type: string
+      responses:
+        '200':
+          description: successful operation
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/TransactionDTO'
+        '400':
+          description: Invalid input value
+  /transaction/total-amount:
+    get:
+      tags:
+        - total-amount
+      summary: get total amount of specefic transaction type of account
+      description: Acccount id and transaction type can be provided
+      produces:
+        - application/json
+      parameters:
+        - name: accountId
+          in: query
+          description: accountId values that need to be considered for get transaction
+          required: true
+          type: string
+        - name: transType
+          in: query
+          description: transType values that need to be considered for filter transaction
+          required: true
+          type: string
+      responses:
+        '200':
+          description: successful operation
+          schema:
+            type: string
+        '400':
+          description: Invalid input value
+definitions:
+  TransactionDTO:
+    type: object
+    properties:
+      id:
+        type: string
+      accountId:
+        type: string
+      counterpartyAccount:
+        type: string
+      counterpartyName:
+        type: string
+      counterPartyLogoPath:
+        type: string
+      instructedAmount:
+        type: string
+      instructedCurrency:
+        type: string
+      transactionAmount:
+        type: string
+      transactionCurrency:
+        type: string
+      transactionType:
+        type: string
+      description:
+        type: string
+    xml:
+      name: transactionDTO
