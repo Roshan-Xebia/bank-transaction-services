@@ -31,7 +31,7 @@ Application having below three Rest endpoints:
 
 ## Build, Deployment & Sanity testing Steps:
 
-1. Get the code from my public GIT hub repository >> 
+1. Get the code from my public GIT hub repository >> https://github.com/Roshan-Xebia/bank-transaction-services
 2. To get the war do “mvn clean install”
 3. Deploy the generated war to tomacat container
 4. Start the tomcat server
