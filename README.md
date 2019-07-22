@@ -35,7 +35,7 @@ Application having below three Rest endpoints:
 2. To get the war do “mvn clean install”
 3. Deploy the generated war to tomacat container
 4. Start the tomcat server
-5. Access the above mentioned endpoints or you can access the endpoint from index page "http://<<server>>:<<port>>/bank-transaction-service"
+5. Access the above mentioned endpoints or you can access the endpoint from index page "http://server_host:port/bank-transaction-service"
 6. Provide the user as ”rrj” and password as “rrj!nd1a”
 
 
