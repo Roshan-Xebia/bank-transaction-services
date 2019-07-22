@@ -21,8 +21,9 @@
   	</spring-security:authentication-manager>
 
 	<spring-security:user-service id="userDetailsService">
-	  <spring-security:user name="rjadmin" password="rrj!nD1a" authorities="ROLE_USER, ROLE_ADMIN"/>
-	  <spring-security:user name="rrj" password="rrj!nd1a" authorities="ROLE_USER"/>
+	  <spring-security:user name="rj" password="rrj!nD1a" authorities="ROLE_USER, ROLE_ADMIN"/>
+	  <spring-security:user name="rrjuser" password="rrj!nd1a" authorities="ROLE_USER"/>
+	  <spring-security:user name="rjadmin" password="rrj!nd1a" authorities="ROLE_ADMIN"/>
 	</spring-security:user-service>
 
 	<bean id="accessDecisionManager" class="org.springframework.security.access.vote.AffirmativeBased">
@@ -75,10 +76,9 @@
 			<camel:setHeader headerName="CamelHttpMethod">
                 <camel:constant>GET</camel:constant>
             </camel:setHeader>
-            <camel:to uri="https://apisandbox.openbankproject.com/obp/v1.2.1/banks/rbs/accounts/{header.accountId}/public/transactions" />
-            <!-- <camel:recipientList>
+            <camel:recipientList>
 			    <camel:simple>https://apisandbox.openbankproject.com/obp/v1.2.1/banks/rbs/accounts/${header.accountId}/public/transactions</camel:simple>
-			</camel:recipientList> -->
+			</camel:recipientList> 
 			<camel:onException>
                 <camel:exception>org.apache.camel.component.http.HttpOperationFailedException</camel:exception>
                 <camel:handled>
