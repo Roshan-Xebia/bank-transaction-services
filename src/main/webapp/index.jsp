@@ -16,8 +16,8 @@
     	  };
     	 
     	  xhttp.open("GET", "rs/v1/current-accounts/transactions?accountId="+document.getElementById("accountId").value, true); //, "rrj", "rrj!nd1a"
-    	  xhttp.setRequestHeader("Authorization", "Basic " + btoa("rrj:rrj!nd1a"));
-    	  xhttp.withCredentials = true;
+    	 // xhttp.setRequestHeader("Authorization", "Basic " + btoa("rrj:rrj!nd1a"));
+    	  //xhttp.withCredentials = true;
     	  xhttp.send();
     	}
       
@@ -33,8 +33,8 @@
     	    }
     	  };
     	  xhttp.open("GET", "rs/v1/current-accounts/transactionsbytype?transType="+document.getElementById("transType").value+"&accountId="+document.getElementById("accountId").value, true);
-    	  xhttp.setRequestHeader("Authorization", "Basic " + btoa("rrj:rrj!nd1a"));
-    	  xhttp.withCredentials = true;
+    	  //xhttp.setRequestHeader("Authorization", "Basic " + btoa("rrj:rrj!nd1a"));
+    	  //xhttp.withCredentials = true;
     	  xhttp.send();
     	}
       
@@ -50,8 +50,8 @@
     	    }
     	  };
     	  xhttp.open("GET", "rs/v1/current-accounts/transaction/total-amount?transType="+document.getElementById("transType").value+"&accountId="+document.getElementById("accountId").value, true);
-    	  xhttp.setRequestHeader("Authorization", "Basic " + btoa("rrj:rrj!nd1a"));
-    	  xhttp.withCredentials = true;
+    	  //xhttp.setRequestHeader("Authorization", "Basic " + btoa("rrj:rrj!nd1a"));
+    	  //xhttp.withCredentials = true;
     	  xhttp.send();
     	}
       </script>

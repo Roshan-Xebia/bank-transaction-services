@@ -36,7 +36,7 @@ Application having below three Rest endpoints:
 3. Deploy the generated war to tomacat container
 4. Start the tomcat server
 5. Access the above mentioned endpoints or you can access the endpoint from index page "http://server_host:port/bank-transaction-service"
-6. Provide the user as ”rrj” and password as “rrj!nd1a”
+6. Provide the user as "rrjuser" and password as “rrj!nd1a”
 
 
 ## Swagger 
