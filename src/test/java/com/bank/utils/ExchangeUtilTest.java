@@ -37,7 +37,7 @@ public class ExchangeUtilTest extends CamelSpringTestSupport {
 	}
 	
 	@Test
-	public void testConvertToJson() {
+	public void testConvertToJson() throws Exception {
 		assertNull(ExchangeUtil.convertToJson(null));
 	}
 	

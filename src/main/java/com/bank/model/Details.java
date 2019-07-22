@@ -5,8 +5,8 @@ public class Details {
 	  private String description;
 	  private String posted;
 	  private String completed;
-	  New_balance New_balanceObject;
-	  Value ValueObject;
+	  private New_balance New_balanceObject;
+	  private Value ValueObject;
 
 
 	 // Getter Methods 

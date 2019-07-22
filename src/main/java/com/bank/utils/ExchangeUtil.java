@@ -1,17 +1,22 @@
 package com.bank.utils;
 
+import java.io.IOException;
 import java.net.URISyntaxException;
 import java.util.Map;
 
 import org.apache.camel.Exchange;
 import org.apache.camel.util.URISupport;
+import org.codehaus.jackson.JsonGenerationException;
+import org.codehaus.jackson.map.JsonMappingException;
 import org.codehaus.jackson.map.ObjectMapper;
 import org.restlet.data.MediaType;
 
 import com.bank.model.Transactions;
 
 /**
- * Retrieve the inputs from exchange
+ * 1. Retrieve the inputs from exchange
+ * 2. Marshalling and Unmarshalling json and pojo
+ * 3. Building the response to exchange
  * @author Roshan
  *
  */
@@ -52,21 +57,19 @@ public final class ExchangeUtil {
     /**
      * @param object Object to be converted to JSON
      * @return String Converted JSON string
+     * @throws IOException 
+     * @throws JsonMappingException 
+     * @throws JsonGenerationException 
      * @throws BaseControllerException
      */
-    public static String convertToJson(Object object) 
+    public static String convertToJson(Object object) throws JsonGenerationException, JsonMappingException, IOException 
     {
         String result = null;
         if (object == null){
             return null;
         }
-        try{
-            result = objectMapper.writeValueAsString(object);
-            return result;
-        } catch (Exception e){
-            //throw new BaseControllerException("Exception occurred while converting POJO to JSON", e);
-        }
-		return result;
+        result = objectMapper.writeValueAsString(object);
+        return result;
     }
 
     /**
@@ -74,17 +77,17 @@ public final class ExchangeUtil {
      * @param typeReference Type of Object to which JSON to be converted
      * @param <T>
      * @return <T> Converted Customer object
+     * @throws IOException 
+     * @throws JsonMappingException 
+     * @throws JsonGenerationException 
      * @throws BaseControllerException
      */
-    public static Transactions convertToPojo(String json) throws Exception
+    public static Transactions convertToPojo(String json) throws JsonGenerationException, JsonMappingException, IOException 
     {
-        Object result = null;
-        try{
-            result = objectMapper.readValue(json, Transactions.class);
-            return (Transactions) result;
-        } catch (Exception e){
-            //throw new BaseControllerException("Exception occurred while converting JSON to POJO", e);
+        if (json == null){
+            return null;
         }
-		return null;
+        Object result = objectMapper.readValue(json, Transactions.class);
+        return (Transactions) result;
     }
 }

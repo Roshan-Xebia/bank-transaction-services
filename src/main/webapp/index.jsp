@@ -10,9 +10,14 @@
     	     document.getElementById("resdata").innerHTML = this.responseText;
     	    }else if (this.status == 400) {
     	     document.getElementById("resdata").innerHTML = this.responseText;
+    	    }else{
+    	    	document.getElementById("resdata").innerHTML = this.responseText;
     	    }
     	  };
-    	  xhttp.open("GET", "rs/v1/current-accounts/transactions?accountId="+document.getElementById("accountId").value, true);
+    	 
+    	  xhttp.open("GET", "rs/v1/current-accounts/transactions?accountId="+document.getElementById("accountId").value, true); //, "rrj", "rrj!nd1a"
+    	  xhttp.setRequestHeader("Authorization", "Basic " + btoa("rrj:rrj!nd1a"));
+    	  xhttp.withCredentials = true;
     	  xhttp.send();
     	}
       
@@ -23,9 +28,13 @@
     	     document.getElementById("resdata").innerHTML = this.responseText;
     	    }else if (this.status == 400) {
     	     document.getElementById("resdata").innerHTML = this.responseText;
+    	    }else{
+    	    	document.getElementById("resdata").innerHTML = this.responseText;
     	    }
     	  };
     	  xhttp.open("GET", "rs/v1/current-accounts/transactionsbytype?transType="+document.getElementById("transType").value+"&accountId="+document.getElementById("accountId").value, true);
+    	  xhttp.setRequestHeader("Authorization", "Basic " + btoa("rrj:rrj!nd1a"));
+    	  xhttp.withCredentials = true;
     	  xhttp.send();
     	}
       
@@ -36,9 +45,13 @@
     	     document.getElementById("resdata").innerHTML = this.responseText;
     	    }else if (this.status == 400) {
     	     document.getElementById("resdata").innerHTML = this.responseText;
+    	    }else{
+    	    	document.getElementById("resdata").innerHTML = this.responseText;
     	    }
     	  };
     	  xhttp.open("GET", "rs/v1/current-accounts/transaction/total-amount?transType="+document.getElementById("transType").value+"&accountId="+document.getElementById("accountId").value, true);
+    	  xhttp.setRequestHeader("Authorization", "Basic " + btoa("rrj:rrj!nd1a"));
+    	  xhttp.withCredentials = true;
     	  xhttp.send();
     	}
       </script>
@@ -52,7 +65,7 @@
   Trans Type: <input type="text" name="transType" id="transType" value="SANDBOX_TAN">
   <br><br>
   <a href="https://apisandbox.openbankproject.com/obp/v1.2.1/banks/rbs/accounts/savings-kids-john/public/transactions"> open Bank </a>
-</br>
+<br></br>
 
 
 

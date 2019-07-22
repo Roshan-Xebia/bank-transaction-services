@@ -21,7 +21,7 @@ public class TransactionTotalAmountResponseControllerTest extends CamelSpringTes
 	@Test
 	public void testProcessTotalAmount() throws Exception {
 		TransactionTotalAmountResponseController responseController = new TransactionTotalAmountResponseController();
-		String content = new String(Files.readAllBytes(Paths.get("src\\test\\resources\\transactionsJson.txt")), "UTF-8");
+		String content = new String(Files.readAllBytes(Paths.get("src\\test\\resources\\transactions.json")), "UTF-8");
 		Exchange request = createExchangeWithBody(content);
 		request.setProperty("transType", "SANDBOX_TAN");
 		responseController.process(request);

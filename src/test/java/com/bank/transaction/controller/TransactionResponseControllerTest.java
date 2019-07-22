@@ -19,7 +19,7 @@ public class TransactionResponseControllerTest extends CamelSpringTestSupport {
 	@Test
 	public void testProcess() throws Exception {
 		TransactionResponseController byTypeResponseController = new TransactionResponseController();
-		String content = new String(Files.readAllBytes(Paths.get("src\\test\\resources\\transactionsJson.txt")), "UTF-8");
+		String content = new String(Files.readAllBytes(Paths.get("src\\test\\resources\\transactions.json")), "UTF-8");
 		Exchange request = createExchangeWithBody(content);
 		byTypeResponseController.process(request);
 		assertNotNull(request.getOut().getBody());

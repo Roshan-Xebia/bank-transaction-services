@@ -11,30 +11,25 @@
     <listener>
         <listener-class>org.springframework.web.context.request.RequestContextListener</listener-class>
     </listener>
-    
-    
-    
 
-	    <!-- location of spring xml files -->
-	  <context-param>
-	    <param-name>contextConfigLocation</param-name>
-	    <param-value>
-	    	<![CDATA[
-	            classpath:application-config.xml
-	        ]]>
-	    </param-value>
-	  </context-param>
-  
-
+	<!-- location of spring xml files -->
+	 <context-param>
+	   <param-name>contextConfigLocation</param-name>
+	   <param-value>
+	   	<![CDATA[
+	           classpath:application-config.xml
+	       ]]>
+	   </param-value>
+	 </context-param>
    
-	<!-- <filter>
+	<filter>
 		<filter-name>springSecurityFilterChain</filter-name>
 		<filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
 	</filter>
 	<filter-mapping>
 		<filter-name>springSecurityFilterChain</filter-name>
 		<url-pattern>/*</url-pattern>
-	</filter-mapping> -->
+	</filter-mapping>
     
     <servlet>
         <servlet-name>CamelServlet</servlet-name>
@@ -49,36 +44,31 @@
         <url-pattern>/rs/*</url-pattern>
     </servlet-mapping>
 
-   
-    
+
 
     <error-page>
         <!-- Missing login -->
         <error-code>401</error-code>
-        <location>/static/error/error.html</location>
+        <location>/WEB-INF/static/error/error.html</location>
     </error-page>
     <error-page>
         <!-- Forbidden directory listing -->
         <error-code>403</error-code>
-        <location>/static/error/error.html</location>
+        <location>/WEB-INF/static/error/error.html</location>
     </error-page>
     <error-page>
         <!-- Missing resource -->
         <error-code>404</error-code>
-        <location>/static/error/error.html</location>
+        <location>/WEB-INF/static/error/error.html</location>
     </error-page>
     <error-page>
         <!-- Uncaught exception -->
         <error-code>500</error-code>
-        <location>/static/error/error.html</location>
+        <location>/WEB-INF/static/error/error.html</location>
     </error-page>
     <error-page>
         <!-- Unsupported servlet method -->
         <error-code>503</error-code>
-        <location>/static/error/error.html</location>
+        <location>/WEB-INF/static/error/error.html</location>
     </error-page>
-
-   
-
 </web-app>
-

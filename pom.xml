@@ -9,7 +9,7 @@
 	<name>bank-transaction-services Maven Webapp</name>
 	<url>http://maven.apache.org</url>
 	<properties>
-		<springframework.version>4.3.0.RELEASE</springframework.version>
+		<springframework.version>4.2.1.RELEASE</springframework.version>
 		<jackson.library>2.7.5</jackson.library>
 		<maven.compiler.source>1.8</maven.compiler.source>
 		<maven.compiler.target>1.8</maven.compiler.target>
@@ -20,6 +20,8 @@
 		<junit.version>4.10</junit.version>
 		<jackson.version>1.9.13</jackson.version>
 		<spring.context.support.version>3.2.10.RELEASE</spring.context.support.version>
+		<spring-security-version>4.0.3.RELEASE</spring-security-version>
+		<skipTests>false</skipTests>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -101,12 +103,38 @@
 			<version>${jackson.version}</version>
 		</dependency>
 		<dependency>
-			<groupId>org.springframework.security</groupId>
-			<artifactId>spring-security-taglibs</artifactId>
-			<version>3.2.10.RELEASE</version>
-		</dependency>
+            <groupId>org.apache.camel</groupId>
+            <artifactId>camel-spring-security</artifactId>
+            <version>${camel.version}</version>
+        </dependency>
+        <dependency>
+		   <groupId>org.springframework.security</groupId>
+		   <artifactId>spring-security-core</artifactId>
+		    <version>${spring-security-version}</version>
+		  </dependency> 
+		  <dependency>
+		   <groupId>org.springframework.security</groupId>
+		   <artifactId>spring-security-web</artifactId>
+		    <version>${spring-security-version}</version>
+		  </dependency> 
+		  <dependency>
+		   <groupId>org.springframework.security</groupId>
+		   <artifactId>spring-security-config</artifactId>
+		   <version>${spring-security-version}</version>
+		  </dependency>
 	</dependencies>
 	<build>
 		<finalName>bank-transaction-services</finalName>
+		
+	    <plugins>
+	      <plugin>
+	        <groupId>org.apache.maven.plugins</groupId>
+	        <artifactId>maven-surefire-plugin</artifactId>
+	        <version>2.12.4</version>
+	        <configuration>
+	          <skipTests>${skipTests}</skipTests>
+	        </configuration>
+	      </plugin>
+	    </plugins>
 	</build>
 </project>
