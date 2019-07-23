@@ -41,9 +41,9 @@ Application having below three Rest endpoints:
     
     | User Name  | Password  |   User Role            |
     | -----------| --------- | ---------------------  |
-    | rrjuser    | rrj!nd1a  | ROLE_USER, ROLE_ADMIN  |
+    | rrjuser    | rrj!nd1a  | ROLE_USER |
     | rrjadmin   | rrj!nd1a  | ROLE_USER |
-    | rrj        | rrj!nd1a  | ROLE_USER |
+    | rrj        | rrj!nd1a  | ROLE_USER, ROLE_ADMIN  |
     
 ## Assumption 
 
