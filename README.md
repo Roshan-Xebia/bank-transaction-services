@@ -32,12 +32,26 @@ Application having below three Rest endpoints:
 ## Build, Deployment & Sanity testing Steps:
 
 1. Get the code from my public GIT hub repository >> https://github.com/Roshan-Xebia/bank-transaction-services
-2. To get the war do “mvn clean install”
+2. To get the war do “mvn clean install”  or "mvn tomcat:run" (skip step 3 and 4)
 3. Deploy the generated war to tomacat container
 4. Start the tomcat server
 5. Access the above mentioned endpoints or you can access the endpoint from index page "http://server_host:port/bank-transaction-service"
-6. Provide the user as "rrjuser" and password as “rrj!nd1a”
+6. Provide the user details in below mentioned table, I have implemented authentication and authorization to access these endpoints.
+   "ROLE_USER" users only able to access all endpoints if other role of user(like ROLE_ADMIN) try to access it will return appropriate      error.
+    
+    | User Name  | Password  |   User Role            |
+    | -----------| --------- | ---------------------  |
+    | rrjuser    | rrj!nd1a  | ROLE_USER, ROLE_ADMIN  |
+    | rrjadmin   | rrj!nd1a  | ROLE_USER |
+    | rrj        | rrj!nD1a  | ROLE_USER |
+    
+## Assumption 
 
+Acount Id and Transaction Type value will not be "N".
+
+## Limitation
+
+userDetailsService: all user details are defind (hard-code) in contex file and it will be not suitable for production.
 
 ## Swagger 
 
