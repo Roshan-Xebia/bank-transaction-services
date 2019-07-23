@@ -6,6 +6,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 
+import com.bank.model.ErrorResponse;
 import com.bank.utils.ExchangeUtil;
 
 /**
@@ -22,8 +23,11 @@ public class TransactionRequestController implements Processor {
 		try {
 			String accountId = ExchangeUtil.getQueryParameter(exchange, "accountId", null);
 			if (accountId == null || accountId.isEmpty()) {
-				LOGGER.error("Invalid account id ");
-				ExchangeUtil.createResponse(exchange, "Invalid account id", 400);
+				LOGGER.error("TransactionRequestController: Invalid account id ");
+				ErrorResponse errorResponse = new ErrorResponse();
+				errorResponse.setStatusCode(422);
+				errorResponse.setMessage("Invalid account id.");
+				ExchangeUtil.createResponse(exchange, errorResponse, 422);
 				exchange.getOut().setHeader("accountId", "N");
 			} else {
 				exchange.getOut().setHeader("accountId", accountId);
@@ -33,7 +37,5 @@ public class TransactionRequestController implements Processor {
 			exchange.getOut().setHeader("sysoutser", "Y");
 			ExchangeUtil.createResponse(exchange, "System out of service", 500);
 		}	
-
 	}
-
 }

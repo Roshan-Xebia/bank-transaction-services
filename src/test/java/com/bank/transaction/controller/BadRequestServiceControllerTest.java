@@ -6,20 +6,20 @@ import org.junit.Test;
 import org.springframework.context.support.AbstractApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-public class BadRequestServiceControllerTest  extends CamelSpringTestSupport {
-
+public class BadRequestServiceControllerTest extends CamelSpringTestSupport {
+	
 	@Override
-	protected AbstractApplicationContext createApplicationContext() {
-		return new ClassPathXmlApplicationContext("application-config.xml");
-	}
+    protected AbstractApplicationContext createApplicationContext() {
+        return new ClassPathXmlApplicationContext("application-config.xml");
+    }
 	
 	@Test
 	public void testProcess() 
 	   throws Exception {
 		Exchange request = createExchangeWithBody("Call badRequestService");
 		template.send("direct:/badRequestService", request);
-		assertEquals("\"Bad Request, please provide correct input!\"", request.getOut().getBody());
-		assertEquals(400,request.getOut().getHeader("CamelHttpResponseCode"));
+		assertEquals("{\"statusCode\":422,\"message\":\"Invalid accountId.\"}", request.getOut().getBody());
+		assertEquals(422,request.getOut().getHeader("CamelHttpResponseCode"));
 	}
 
 }

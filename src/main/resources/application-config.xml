@@ -13,8 +13,6 @@
        http://camel.apache.org/schema/spring 
           http://camel.apache.org/schema/spring/camel-spring.xsd
 	   ">
-  	<import resource="classpath:/Camel-contex.xml"/>
-    
-
-
+  	<import resource="classpath:/camel-contex.xml"/>
+  	<import resource="classpath:/spring-security.xml"/>
 </beans>

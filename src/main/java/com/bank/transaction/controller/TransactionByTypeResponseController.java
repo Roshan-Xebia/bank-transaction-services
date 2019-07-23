@@ -25,7 +25,6 @@ public class TransactionByTypeResponseController implements Processor {
 	public void process(Exchange exchange) throws Exception {
 		LOGGER.debug("In TransactionResponseController >>>");
 		String responseBdy = exchange.getIn().getBody(String.class);
-		
 		String transType = exchange.getProperty("transType").toString();
 		Transactions transactions = ExchangeUtil.convertToPojo(responseBdy);
 		List<TransactionDTO> transactionDTOList = TransactionToTransactionDTOMapper.buildTransactionDTOList(transactions);

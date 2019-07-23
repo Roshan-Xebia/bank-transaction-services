@@ -67,9 +67,9 @@ public class TransactionToTransactionDTOMapper {
 	
 	 public static List<TransactionDTO> filterTransactionByTranType(List<TransactionDTO> transactionDTOList, String transType){
 		 if(isNotNull(transType)) {
-			 transactionDTOList = transactionDTOList.stream()    
-		                .filter(str -> transType.equalsIgnoreCase(str.getTransactionType()))   
-		                .collect(Collectors.toList()); 
+			 transactionDTOList = transactionDTOList.stream()
+					 .filter(str -> transType.equalsIgnoreCase(str.getTransactionType()))
+					 .collect(Collectors.toList());
 		 }
 		 return transactionDTOList;
 	 }

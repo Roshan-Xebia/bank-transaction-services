@@ -5,6 +5,7 @@ import org.apache.camel.Processor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.bank.model.ErrorResponse;
 import com.bank.utils.ExchangeUtil;
 
 /**
@@ -19,27 +20,28 @@ public class TransactionByTypeRequestController implements Processor {
 	public void process(Exchange exchange) throws Exception {
 		try {
 			String transType = ExchangeUtil.getQueryParameter(exchange, "transType", null);
-			if (transType == null || transType.isEmpty()) {
-				LOGGER.error("Invalid transaction type ");
-				ExchangeUtil.createResponse(exchange, "Invalid transaction type", 400);
-				exchange.getOut().setHeader("transType", "N");
-			} else {
-				exchange.setProperty("transType", transType);
-			}
-			
 			String accountId = ExchangeUtil.getQueryParameter(exchange, "accountId", null);
-			if (accountId == null || accountId.isEmpty()) {
-				LOGGER.error("Invalid account id");
-				ExchangeUtil.createResponse(exchange, "Invalid account id", 400);
+			if (transType == null || transType.isEmpty()) {
+				LOGGER.error("TransactionByTypeRequestController: Invalid transaction type ");
+				ErrorResponse errorResponse = new ErrorResponse();
+				errorResponse.setStatusCode(422);
+				errorResponse.setMessage("Invalid transaction type.");
+				ExchangeUtil.createResponse(exchange, errorResponse, 422);
+				exchange.getOut().setHeader("transType", "N");
+			} else if (accountId == null || accountId.isEmpty()) {
+				LOGGER.error("TransactionByTypeRequestController: Invalid account id");
+				ErrorResponse errorResponse = new ErrorResponse();
+				errorResponse.setStatusCode(422);
+				errorResponse.setMessage("Invalid account id.");
+				ExchangeUtil.createResponse(exchange, errorResponse, 422);
 				exchange.getOut().setHeader("accountId", "N");
 			} else {
+				exchange.setProperty("transType", transType);
 				exchange.getOut().setHeader("accountId", accountId);
 			}
 		}catch (Exception e) {
 			exchange.getOut().setHeader("sysoutser", "Y");
 			ExchangeUtil.createResponse(exchange, "System out of service", 500);
 		}
-		
 	}
-
 }

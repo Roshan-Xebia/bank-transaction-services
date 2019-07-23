@@ -1,35 +1,32 @@
 package com.bank.transaction.controller;
 
 import org.apache.camel.Exchange;
-import org.apache.camel.component.http.HttpOperationFailedException;
 import org.apache.camel.test.spring.CamelSpringTestSupport;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.springframework.context.support.AbstractApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 public class TransactionRequestControllerTest  extends CamelSpringTestSupport {
 
+	TransactionRequestController requestController = new TransactionRequestController();
+	Exchange request = createExchangeWithBody("");
+	
 	@Override
 	protected AbstractApplicationContext createApplicationContext() {
 		return new ClassPathXmlApplicationContext("application-config.xml");
 	}
-	@Ignore
+	
 	@Test
-	public void testProcess() {
-		Exchange request = createExchangeWithBody("");
-		template.send("http://localhost:8081/bank-transaction-services/rs/v1/current-accounts/transactions?accountId=savings-kids-john", request);
-		assertEquals(200,request.getOut().getHeader("CamelHttpResponseCode"));
-		assertNotNull(request.getOut().getBody());
+	public void testProcessInvalidAccountId() throws Exception {
+		request.getIn().setHeader("CamelHttpQuery","accountId=");
+		requestController.process(request);
+		assertEquals("{\"statusCode\":422,\"message\":\"Invalid account id.\"}", request.getOut().getBody());
 	}
 	
-	@Ignore
 	@Test
-	public void testProcessException() {
-		Exchange request = createExchangeWithBody("");
-		template.send("http://localhost:8081/bank-transaction-services/rs/v1/current-accounts/transactions", request);
-		assertNull(request.getOut().getBody());
-		assertEquals(HttpOperationFailedException.class, request.getException().getClass());
+	public void testProcess() throws Exception {
+		request.getIn().setHeader("CamelHttpQuery","accountId=test");
+		requestController.process(request);
+		assertEquals("test", request.getOut().getHeader("accountId"));
 	}
-
 }

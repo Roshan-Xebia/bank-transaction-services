@@ -25,16 +25,12 @@ public class TransactionResponseController implements Processor{
 		 LOGGER.debug("In TransactionResponseController >>>");
 		 try {
 			 String responseBdy = exchange.getIn().getBody(String.class);
-			 
 			 Transactions transactions=ExchangeUtil.convertToPojo(responseBdy);
-			 
 			 List<TransactionDTO> transactionDTOList = TransactionToTransactionDTOMapper.buildTransactionDTOList(transactions);
 			 ExchangeUtil.createResponse(exchange, transactionDTOList, 200);
-			
 		 }catch (Exception e) {
 			 exchange.getOut().setHeader("sysoutser", "Y");
 			 ExchangeUtil.createResponse(exchange, "System out of service", 404);
 		}
-			 
 	}
 }
