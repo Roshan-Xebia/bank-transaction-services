@@ -43,7 +43,7 @@ Application having below three Rest endpoints:
     | -----------| --------- | ---------------------  |
     | rrjuser    | rrj!nd1a  | ROLE_USER, ROLE_ADMIN  |
     | rrjadmin   | rrj!nd1a  | ROLE_USER |
-    | rrj        | rrj!nD1a  | ROLE_USER |
+    | rrj        | rrj!nd1a  | ROLE_USER |
     
 ## Assumption 
 
