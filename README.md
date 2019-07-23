@@ -26,7 +26,9 @@ Application having below three Rest endpoints:
  Tomcat 8
  Maven 4
  Swagger2
- Junit 4
+ Junit 4 Eclipse
+ Eclipse
+
 
 
 ## Build, Deployment & Sanity testing Steps:
