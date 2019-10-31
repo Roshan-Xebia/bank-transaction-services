@@ -20,7 +20,7 @@
 		<junit.version>4.10</junit.version>
 		<jackson.version>1.9.13</jackson.version>
 		<spring.context.support.version>3.2.10.RELEASE</spring.context.support.version>
-		<spring-security-version>4.0.3.RELEASE</spring-security-version>
+		<spring-security-version>5.2.0.RELEASE</spring-security-version>
 		<skipTests>false</skipTests>
 	</properties>
 	<dependencies>
